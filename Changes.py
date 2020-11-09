@@ -17,8 +17,10 @@ def get_ips (file_name):
 # This will be the list of commands we will use
 commands_list = []
 
+commands_file = input("Please enter the name of the commands file to execute: ")
+
 # Get the commands from commands.txt and append to our list
-with open('change_commands.txt', 'r') as f:
+with open(commands_file, 'r') as f:
 	for line in f:
 		commands_list.append(line)
 
