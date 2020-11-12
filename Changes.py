@@ -19,7 +19,7 @@ commands_list = []
 
 commands_file = input("Please enter the name of the commands file to execute: ")
 
-# Get the commands from commands.txt and append to our list
+# Get the commands from the specified commands.txt and append to our list
 with open(commands_file, 'r') as f:
 	for line in f:
 		commands_list.append(line)
@@ -53,15 +53,19 @@ print('#' * 50)
 #Prompt user for account info
 username = input("Username: ")
 password = getpass()
-
+file_name = "Results.txt"
 
 
 #Make a for loop to hit all the devices, for this we will be looking at the IOS it's running
 for ip in ips:
 	#Connect to a device
-	net_connect = make_connection(ip, username, password)
-	#Run all our commands and append to our file_name
-	output = net_connect.send_config_set(commands_list)
-	output2 = net_connect.save_config()
-	results = output + '\n'+ output2
-	print(results)
+	try:
+		net_connect = make_connection(ip, username, password)
+		#Run all our commands and append to our file_name
+		output = net_connect.send_config_set(commands_list)
+		output2 = net_connect.save_config()
+		results = output + '\n'+ output2
+		to_doc_w(file_name, results)
+		print(results)
+	except:
+		print("Changes failed or unable to connect to " + ip )

@@ -1,5 +1,5 @@
 # Py-tvt
-Python Config Command Sender
+Python TVT Tests Script
 
 
 ## Installation
@@ -10,7 +10,7 @@ netmiko
 re
 difflib
 
-Use the package manager pip to install 
+Use the package manager pip to install
 ```bash
 pip install getpass
 pip install netmiko
@@ -22,17 +22,24 @@ pip install re
 
 ```python
 Edit the IPs.txt file to have a host on each line with just their IP
-Edit the change_commands.txt file with your CLI command on each line
+Create a txt file for the commands you wish to run, I have made this a required input so you don't run any commands by accident
+put all off your individual changes on each line, just like in the IPs.txt file
 
-To execute: python3 Changes.py
+NOTE: You do not require a conf t at the beginning or an end/exit statement at the end, the script will put itself into config mode automatically and it exit to write the configuration
 
-You will be shown the list of commands this script is going to execute, if there is an issue, exit the script.
+To execute: python3 TVT.py
+
+You will be asked for the file name of your commands file, eg change_commands.txt
+
+You will be shown the list of commands this script is going to execute, if there is an issue, exit the script using Ctrl c
 
 You will be prompted for your username and password
 
-The script will run through each host and run each of the commands on each host.
+The script will run through each host and run each of the commands on each host, saving this to the above text file.
 
-Upon completion it will write the config to start-up and print the status.
+If a host fails to connect, you will be be given an error for that host and the  script will continue
+
+Results will be printed to the screen and also Results.txt
 
 ```
 
