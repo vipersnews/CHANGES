@@ -1,2 +1,0 @@
-int loop 1000
-desc testing auto
