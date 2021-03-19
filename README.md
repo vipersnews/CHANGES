@@ -14,9 +14,7 @@ datetime
 
 Use the package manager pip to install
 ```bash
-pip install getpass
 pip install netmiko
-pip install re
 
 ```
 
